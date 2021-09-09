@@ -20,4 +20,14 @@ authRoutes.get("/google/fail", (req: Request, res: Response) => {
   });
 });
 
+authRoutes.get("/logout", (req: Request, res: Response) => {
+  req.session = null;
+  req.logOut();
+  res.redirect('/auth/login');
+});
+
+authRoutes.get("/login", (req: Request, res: Response) => {
+  res.send('<a href="http://localhost:3333/auth/google">Login com Google</a>');
+});
+
 export default authRoutes;
