@@ -1,4 +1,5 @@
 import { Router, Request, Response } from 'express'
+// import isAuthenticated from '../middlewares/IsAuthenticated';
 
 const homeRoutes = Router();
 

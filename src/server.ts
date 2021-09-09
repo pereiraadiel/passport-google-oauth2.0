@@ -1,8 +1,15 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 import app from './app';
-const PORT = process.env.PORT || 3333;
+import cors from 'cors';
 
+const PORT = process.env.PORT || 3333;
 const server = express();
+
+server.use(cors());
+server.use(express.urlencoded({extended: false}));
+server.use(express.json());
 
 server.use(app);
 
