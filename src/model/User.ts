@@ -1,7 +1,7 @@
 export default class User {
-  private name: string | null = null;
-  private email: string | null = null;
-  private id: string | null = null;
+  public name: string | null = null;
+  public email: string | null = null;
+  public id: string | null = null;
 
   setName(name: string):void {
     this.name = name

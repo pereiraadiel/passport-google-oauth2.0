@@ -1,5 +1,9 @@
 # Autenticação com Google
 
+## Observações
+### Este exemplo de autenticação não utiliza banco de dados, apenas armazena em um array na memória, o que quer dizer que a cada execução o 'banco de dados' é recriado 
+<br/>
+
 ## Executando
 ### clone o repo
 ```sh

@@ -7,13 +7,13 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 const GOOGLE_CALLBACK_URL = process.env.GOOGLE_CALLBACK_URL;
 const userRepository = new UserRepository();
 
-passport.serializeUser((user, done) => {
-  done(null, user);
+passport.serializeUser((user: any, done) => {
+  done(null, user.getId());
 });
 
-passport.deserializeUser((user: Express.User, done) => {
+passport.deserializeUser((id: any, done) => {
   // find user by id
-  // const user = userRepository.findById(id as string);
+  const user = userRepository.findById(id as string);
   done(null, user);
 });
 
@@ -28,9 +28,13 @@ passport.use(
       // create user
       let email = null;
       let user;
-      if(profile.emails)  {
+      if (profile.emails) {
         email = profile?.emails[0]?.value;
-        user = userRepository.findOrCreate(profile.displayName, email, profile.id)
+        user = userRepository.findOrCreate(
+          profile.displayName,
+          email,
+          profile.id
+        );
       }
       return done(null, user);
     }
